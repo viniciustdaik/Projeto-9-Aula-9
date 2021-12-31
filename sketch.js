@@ -1,16 +1,17 @@
 //variável
 var box;
-
+var edges;
 function setup() {
   createCanvas(400, 400);
   box = createSprite(200, 200, 30, 30);
   box.shapeColor = 'white';
+  edges = createEdgeSprites();
 }
-createEdgeSprites();
+
 function draw() {
   background('orange');
 
-  if (keyIsDown(RIGHT_ARROW)) {
+  if(keyIsDown(RIGHT_ARROW)) {
     box.position.x = box.position.x +5;
     background('green');
   }
@@ -38,6 +39,10 @@ function draw() {
   if(keyIsDown(UP_ARROW)&&keyIsDown(RIGHT_ARROW)){
     background('brown');
   }
+  box.collide(edges[0]);
+  box.collide(edges[2]);
+  box.collide(edges[3]);
+  box.collide(edges[1]);
   drawSprites();
 }
 
